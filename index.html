@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="description" content="Test : test">
-
     <link rel="stylesheet" type="text/css" media="screen" href="#">
-
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <title>Rishi's Playspace</title>
   </head>
 
   <body>
-     <img src="images/loading.gif" alt="loading" style="height:100%; width:100%">     
+    <div id="main">
+        <img id="loadingGif" src="images/loading.gif" alt="loading" style="height:100%; width:100%">     
+    </div>
+    <script>
+    $(document).ready(function() {
+        function removeGif() {
+            $("#loadingGif").hide();
+        };
+        
+        function showGif() {
+            $("#loadingGif").show();
+        };
+
+        $("#loadingGif").click(function() {
+            $("#loadingGif").slideUp(300).delay(500).fadeOut(300);
+            removeGif();
+            $("#loadingGif").slideDown(300).delay(500).fadeIn(300); 
+            showGif();
+        });
+    });
+    </script>
   </body>
 </html>
