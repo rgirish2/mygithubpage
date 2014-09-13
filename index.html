@@ -13,23 +13,6 @@
     <div id="main">
         <img id="loadingGif" src="images/loading.gif" alt="loading" style="height:100%; width:100%">     
     </div>
-    <script>
-    $(document).ready(function() {
-        function removeGif() {
-            $("#loadingGif").hide();
-        };
-        
-        function showGif() {
-            $("#loadingGif").show();
-        };
-
-        $("#loadingGif").click(function() {
-            $("#loadingGif").slideUp(300).delay(500).fadeOut(300);
-            removeGif();
-            $("#loadingGif").slideDown(300).delay(500).fadeIn(300); 
-            showGif();
-        });
-    });
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>
