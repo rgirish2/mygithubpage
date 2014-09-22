@@ -6,13 +6,19 @@
         <title>Next Capital Programming Challenge</title>
     </head>
     <body>
-        <h1>HELLO WORLD</h1>
-        <div id="sign_up_form">
-            <form method="POST" action="http://recruiting-api.nextcapital.com/users" >
-                <input type="email" id="email" value="hello@gmail.com" placeholder="Email">
-                <input type="password" id=="password" placeholder="Password">
-                <input type="submit" value="Submit">
-            </form>
-        </div>
+		<div id="all">
+		    <h1>HELLO WORLD</h1>
+		    <div id="coreDiv">
+		        <form>
+		            <input type="email" id="email" placeholder="Email">
+		            <input type="password" id="password" placeholder="Password">
+		            <button type="button" onClick="getRecords(this)">Submit</button>
+		        </form>
+		    </div>
+			<div id="nola">
+			</div>
+		</div>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="js/nextCapital.js"></script>
     </body>
 </html>
