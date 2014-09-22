@@ -1,24 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="author" content="Rishi Girish (rgirish2ATillinoisDOTedu)"> 
-        <title>Next Capital Programming Challenge</title>
-    </head>
-    <body>
-		<div id="all">
-		    <h1>HELLO WORLD</h1>
-		    <div id="coreDiv">
-		        <form>
-		            <input type="email" id="email" placeholder="Email">
-		            <input type="password" id="password" placeholder="Password">
-		            <button type="button" onClick="getRecords(this)">Submit</button>
-		        </form>
-		    </div>
-			<div id="nola">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">        
+		<meta name="author" content="Rishi Girish (rgirish2ATillinoisDOTedu)">         
+		<title>Next Capital Programming Challenge</title>
+
+		<!-- Bootstrap -->
+    	<link href="css/bootstrap.min.css" rel="stylesheet">
+    	<!-- Custom styles for this template -->
+    	<link href="css/cover.css" rel="stylesheet">
+		<!-- Custom styles for the sortable lists -->
+		<link href="css/sortable.css" rel="stylesheet">
+		<!-- jQuery UI stylesheet -->
+ 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+	</head>
+
+    <body style="background-image:url(images/nXcAbackground.jpg)">
+
+		<div class="site-wrapper" style="box-shadow:0px 0px 100px rgba(24, 88, 240, 0.5) inset">
+			<div class="site-wrapper-inner">
+		    	<div class="cover-container">
+		      		<div class="masthead clearfix">
+		        		<div class="inner">
+		          			<h3 class="masthead-brand">To-Do Lists</h3>
+		          			<ul class="nav masthead-nav">
+		            			<li class="active"><a href="#">Home</a></li>
+		            			<li><a href="#">Features</a></li>
+		            			<li><a href="#">Contact</a></li>
+								<li id="logOutButton" style="display:none"><button class="btn btn-warning btn-sm" onClick="logoutCurrentUser(this)">Logout</button></li>
+		          			</ul>
+		        		</div>
+		      		</div>
+					
+					<div class="inner cover" id="writeAndButtonsDiv">
+		        		<h1 class="cover-heading">Your one stop shop for to-do lists.</h1>
+		        		<p class="lead">Trust us. We know to-do lists better than anyone out there. It flows in our blood. To-do lists are all we think about everyday at everytime. We are the to-do lists ninjas!!!!</p>
+						<p class="lead">
+							<div id="loginSignUpButtons">
+								<!-- Buttons to trigger modal -->
+								<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+								<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signInModal">Sign In</button>
+							</div>						
+						</p>
+		      		</div>
+					
+					<div class="container" id="listsGoHereDiv" style="display:none">
+						<ul id="sortable">
+							<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px">
+								<li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1 <button id="btn btn-sm btn-primary">Update</button><button id="btn btn-sm btn-warning">Delete</button></li>
+							</div>
+							<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px">
+								<li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2 <button id="btn btn-sm btn-primary">Update</button><button id="btn btn-sm btn-warning">Delete</button></li>
+							</div>
+							<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px">
+								<li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3 <button id="btn btn-sm btn-primary">Update</button><button id="btn btn-sm btn-warning">Delete</button></li>
+							</div>
+							<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px">
+								<li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4 <button id="btn btn-sm btn-primary" onClick="updateToDo(id)">Update</button><button id="btn btn-sm btn-warning" onClick="deleteToDo(id)">Delete</button></li>
+							</div>
+						</ul>
+					</div>
+				
+					<div id="top" class="container-fluid">
+			  			<div class="mastfoot">
+		        			<div class="inner">
+		          				<p>Cover template for <a href="http://rishigirish.me/nextCapital">Rishi's Project</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+		        			</div>
+		      			</div>
+		    		</div>
+		  		</div>
 			</div>
 		</div>
-		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	
+		<!-- Sign In Modal -->
+		<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModal" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title" id="myModalLabel" style="color:black">Sign In</h4>
+					</div>
+					<div class="modal-body">
+						<div id="signIn">
+							<form role="form" class="form-horizontal">
+								<div class="form-group">
+									<label for="signInEmail" class="col-sm-2 control-label" style="color:black">Email</label>
+									<div class="col-sm-10">
+										<input type="email" id="signInEmail" placeholder="Email" class="form-control" value="">
+									</div>								
+								</div>
+								<div class="form-group">
+									<label for="signInPassword" class="col-sm-2 control-label" style="color:black">Password</label>
+									<div class="col-sm-10">									
+										<input type="password" id="signInPassword" placeholder="Password" class="form-control" value="">
+									</div>							
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" onClick="signIn(this)" style="color:black" data-dismiss="modal">Sign In</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- Sign Up Modal -->
+		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title" id="myModalLabel" style="color:black">Sign Up</h4>
+					</div>
+					<div class="modal-body">
+						<div id="signUp">
+							<form role="form" class="form-horizontal">
+								<div class="form-group">
+									<label for="signUpEmailLabel" style="color:black" class="col-sm-2 control-label">Email</label>
+									<div class="col-sm-10">
+						    			<input type="email" id="signUpEmail" placeholder="Email" class="form-control" value="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="signUpPasswordLabel" style="color:black" class="col-sm-2 control-label">Password</label>
+									<div class="col-sm-10">								
+										<input type="password" id="signUpPassword" placeholder="Password" class="form-control" value="">
+									</div>									
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" onClick="signUp(this)" style="color:black" data-dismiss="modal">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>		
+		<script src="js/bootstrap.min.js"></script>
 		<script src="js/nextCapital.js"></script>
+		<script src="js/docs.min.js"></script>
     </body>
 </html>
+
