@@ -47,20 +47,11 @@
 		      		</div>
 					
 					<div class="container" id="listsGoHereDiv" style="display:none">
+					    <div class="lead">
+					        <a class="btn btn-primary btn-lg" onClick="showCreateANewTodoModal()">Create a new todo</a>
+					    </div>
 						<ul id="sortable">
-							<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px">
-								<li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1 <button id="btn btn-sm btn-primary">Update</button><button id="btn btn-sm btn-warning">Delete</button></li>
-							</div>
-							<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px">
-								<li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2 <button id="btn btn-sm btn-primary">Update</button><button id="btn btn-sm btn-warning">Delete</button></li>
-							</div>
-							<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px">
-								<li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3 <button id="btn btn-sm btn-primary">Update</button><button id="btn btn-sm btn-warning">Delete</button></li>
-							</div>
-							<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px">
-								<li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4 <button id="btn btn-sm btn-primary" onClick="updateToDo(id)">Update</button><button id="btn btn-sm btn-warning" onClick="deleteToDo(id)">Delete</button></li>
-							</div>
-						</ul>
+    					</ul>
 					</div>
 				
 					<div id="top" class="container-fluid">
@@ -80,7 +71,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-						<h4 class="modal-title" id="myModalLabel" style="color:black">Sign In</h4>
+						<h4 class="modal-title" id="signInModalHeaderLabel" style="color:black">Sign In</h4>
 					</div>
 					<div class="modal-body">
 						<div id="signIn">
@@ -114,7 +105,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-						<h4 class="modal-title" id="myModalLabel" style="color:black">Sign Up</h4>
+						<h4 class="modal-title" id="signUpModalHeaderLabel" style="color:black">Sign Up</h4>
 					</div>
 					<div class="modal-body">
 						<div id="signUp">
@@ -141,6 +132,43 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- Create a new todo modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addNewTodoModal" aria-hidden="true" id="addNewTodoModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="newTodoModalHeaderLabel" style="color:black">Create new todo item:</h4>
+                    </div>
+                    <div class="modal-content">
+                        <textarea class="form-control" name="description" id="newTodoDescription" cols="25" rows="5" style="color:black; margin: 0px; width: 290px; height: 107px;">Write description here</textarea>
+                    </div>
+                    <div class="modal-footer">
+				        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					    <button type="button" class="btn btn-primary" onClick="submitCreateANewTodoRequest()" style="color:black" data-dismiss="modal">Submit</button>
+				    </div>
+				</div>
+            </div>
+        </div>
+        
+        <!-- Update a todo modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="updateATodoModal" aria-hidden="true" id="updateATodoModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="updateTodoModalHeaderLabel" style="color:black"></h4>
+                    </div>
+                    <div class="modal-content" id="todoIdContentGoesHere">
+                    </div>
+                    <div class="modal-footer">
+				        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					    <button type="button" class="btn btn-primary" onClick="submitUpdateTodoRequest()" style="color:black" data-dismiss="modal">Submit</button>
+				    </div>
+				</div>
+            </div>
+        </div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>		
