@@ -78,15 +78,12 @@ function updateToDo(todoId) {
     
     var currentDescription = "";
     
-    for (var i = user_todos - 1; i >= 0; i--) {
+    for (var i = user_todos.length - 1; i >= 0; i--) {
         if (user_todos[i].id == todoId) {
-            alert("Found match");
             currentDescription = currentDescription + user_todos[i].description;
             break;
         }
     }
-
-    alert(currentDescription);
 
     var updateTodoHTML = '<label class="col-sm-4 control-label" for="updateTodoDescription" style="color:black">Description</label><div class="col-sm-8"><textarea class="form-control" id="updateTodoDescription">' + currentDescription + '</textarea></div><label class="col-sm-4 control-label" for="updateTodoIsComplete" style="color:black">is_complete: </label><div class="col-sm-8"><select class="form-control" id="updateTodoIsComplete"><option value=true>True</option><option value=false>False</option></select></div>';
     
@@ -214,7 +211,7 @@ function showDetails () {
 };
 
 function listUserTodos () {
-    var oneItemHTMLBefore = '<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px"><li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>';
+    var oneItemHTMLBefore = '<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px; text-shadow:0 1px 3px rgba(255, 255, 255, .5)"><li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>';
     
     var oneItemHTMLAfter = '<button id="btn btn-sm btn-primary" style="margin-left: 15px" onClick="updateToDo(';
     
