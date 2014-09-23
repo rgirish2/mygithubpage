@@ -76,7 +76,19 @@ function updateToDo(todoId) {
     $("#updateTodoModalHeaderLabel").empty();
     $("#updateTodoModalHeaderLabel").append(todoId);
     
-    var updateTodoHTML = '<label class="col-sm-4 control-label" for="updateTodoDescription" style="color:black">Description</label><div class="col-sm-8"><textarea class="form-control" id="updateTodoDescription"></textarea></div><label class="col-sm-4 control-label" for="updateTodoIsComplete" style="color:black">is_complete: </label><div class="col-sm-8"><select class="form-control" id="updateTodoIsComplete"><option value=true>True</option><option value=false>False</option></select></div>';
+    var currentDescription = "";
+    
+    for (var i = user_todos - 1; i >= 0; i--) {
+        if (user_todos[i].id == todoId) {
+            alert("Found match");
+            currentDescription = currentDescription + user_todos[i].description;
+            break;
+        }
+    }
+
+    alert(currentDescription);
+
+    var updateTodoHTML = '<label class="col-sm-4 control-label" for="updateTodoDescription" style="color:black">Description</label><div class="col-sm-8"><textarea class="form-control" id="updateTodoDescription">' + currentDescription + '</textarea></div><label class="col-sm-4 control-label" for="updateTodoIsComplete" style="color:black">is_complete: </label><div class="col-sm-8"><select class="form-control" id="updateTodoIsComplete"><option value=true>True</option><option value=false>False</option></select></div>';
     
     $("#todoIdContentGoesHere").empty();
     $("#todoIdContentGoesHere").append(updateTodoHTML);
