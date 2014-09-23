@@ -204,13 +204,13 @@ function showDetails () {
 function listUserTodos () {
     var oneItemHTMLBefore = '<div id="col-sm-12" style="padding-bottom: 15px; padding-top:15px"><li class="ui-state-default" style="color:black"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>';
     
-    var oneItemHTMLAfter = '<button id="btn btn-sm btn-primary" onClick="updateToDo(';
+    var oneItemHTMLAfter = '<button id="btn btn-sm btn-primary" style="margin-left: 15px" onClick="updateToDo(';
     
-    var oneItemHTMLAfterAfter = ')">Update</button>></li></div>';
+    var oneItemHTMLAfterAfter = ')">Update</button></li></div>';
     
     if (user_todos !== null) {
         for (var i = 0; i < user_todos.length; i++) {
-            var oneItemCompleteHTML = oneItemHTMLBefore + "Description: " + user_todos[i].description + " Id: " + user_todos[i].id + " is_complete: " + user_todos[i].is_complete + oneItemHTMLAfter + user_todos[i].id + oneItemHTMLAfterAfter;
+            var oneItemCompleteHTML = oneItemHTMLBefore + "Description: " + user_todos[i].description + " is_complete: " + user_todos[i].is_complete + oneItemHTMLAfter + user_todos[i].id + oneItemHTMLAfterAfter;
             $("#sortable").append(oneItemCompleteHTML);
 	    }
 	}
