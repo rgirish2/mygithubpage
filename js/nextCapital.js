@@ -9,6 +9,11 @@ var user_todosIDs = [];
 function signUp (event) {
 	var signUpEmailVal = $("#signUpEmail").val();
 	var signUpPwd = $("#signUpPassword").val();
+    var signUpEmailElement = document.getElementById("signUpEmail");
+    var signUpPwdElement = document.getElementById("signUpPassword");
+    signUpEmailElement.value = "";
+    signUpPwdElement.value = "";
+
     $.ajax ({
 		url : "http://recruiting-api.nextcapital.com/users",
 		type : "POST",
@@ -27,7 +32,12 @@ function signUp (event) {
 function signIn (event) {
 	var signInEmailVal = $("#signInEmail").val();
 	var signInPwd = $("#signInPassword").val();
-	$.ajax ({
+    var signInEmailElement = document.getElementById("signInEmail");
+    var signInPwdElement = document.getElementById("signInPassword");
+    signInEmailElement.value = "";
+    signInPwdElement.value = "";
+	
+    $.ajax ({
 		url : "http://recruiting-api.nextcapital.com/users/sign_in",
 		type : "POST",
 		data : {email : signInEmailVal, password : signInPwd},
