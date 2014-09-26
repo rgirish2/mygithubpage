@@ -7,12 +7,12 @@ var user_todos = [];
 var user_todosIDs = [];
 
 function signUp (event) {
-	var signUpEmailVal = $("#signUpEmail").val();
+    	var signUpEmailVal = $("#signUpEmail").val();
 	var signUpPwd = $("#signUpPassword").val();
-    var signUpEmailElement = document.getElementById("signUpEmail");
-    var signUpPwdElement = document.getElementById("signUpPassword");
-    signUpEmailElement.value = "";
-    signUpPwdElement.value = "";
+	var signUpEmailElement = document.getElementById("signUpEmail");
+	var signUpPwdElement = document.getElementById("signUpPassword");
+	signUpEmailElement.value = "";
+	signUpPwdElement.value = "";
 
     $.ajax ({
 		url : "http://recruiting-api.nextcapital.com/users",
